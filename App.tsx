@@ -89,7 +89,16 @@ const App: React.FC = () => {
         try {
             // Angle 1: Generate from the top-down view. This becomes the reference image.
             setLoadingMessage(`Rendering room... Angle 1 of 2 (Forward View)`);
-            const firstRenderPrompt = `Using the provided top-down floor plan as a spatial reference, generate a photorealistic, eye-level, forward-facing interior render for the following room description: "${prompt}". This first image will establish the definitive style, furniture, and lighting for the room.`;
+            const firstRenderPrompt = `**Primary Goal:** Create a photorealistic, eye-level, forward-facing interior render of a room.
+
+**Inputs:** You are given a top-down 2D floor plan. This floor plan is the **single source of truth** for both the room's layout AND its **architectural and decorative style** (e.g., modern, Roman, minimalist).
+
+**Task:**
+1.  **Analyze the Floor Plan:** Carefully observe the style, materials, furniture, and colors depicted in the top-down view.
+2.  **Adhere to the Style:** Your generated eye-level render **must** perfectly match the aesthetic established in the floor plan.
+3.  **Render the Specific Room:** Within this established style, generate the view for the following specific room: "${prompt}".
+
+The final output should be a single image that looks like a photograph taken inside the world defined by the top-down floor plan.`;
             const firstRender = await generateFromImageAndText(topDownImage, 'image/png', firstRenderPrompt);
             newRenders.push(firstRender);
 
