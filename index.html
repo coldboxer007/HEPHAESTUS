@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20width='64'%20height='64'%20viewBox='0%200%2064%2064'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3E%3Cpath%20d='M12%2042.5V38.5C12%2036.2909%2013.7909%2034.5%2016%2034.5H48C50.2091%2034.5%2052%2036.2909%2052%2038.5V42.5C52%2044.7091%2050.2091%2046.5%2048%2046.5H44.5C44.5%2049.8137%2040.8137%2052.5%2036.5%2052.5H27.5C23.1863%2052.5%2019.5%2049.8137%2019.5%2046.5H16C13.7909%2046.5%2012%2044.7091%2012%2042.5Z'%20stroke='%2300d1ff'%20stroke-width='3'%20stroke-linecap='round'%20stroke-linejoin='round'/%3E%3Cpath%20d='M26.2426%2031.0251C25.0216%2027.8821%2026.113%2024.3188%2028.5%2022C30.887%2019.6812%2033.113%2019.6812%2035.5%2022C37.887%2024.3188%2038.9784%2027.8821%2037.7574%2031.0251C37.1044%2032.7246%2036.1044%2034.5%2032%2034.5C27.8956%2034.5%2026.8956%2032.7246%2026.2426%2031.0251Z'%20stroke='%2300d1ff'%20stroke-width='3'%20stroke-linecap='round'%20stroke-linejoin='round'/%3E%3Cpath%20d='M32%2020C32.7163%2018.0601%2032.7163%2016.0601%2032%2014'%20stroke='%2300d1ff'%20stroke-width='3'%20stroke-linecap='round'%20stroke-linejoin='round'/%3E%3Cpath%20d='M28%2023C27.2837%2021.0601%2026.6264%2018.5271%2028%2017'%20stroke='%2300d1ff'%20stroke-width='3'%20stroke-linecap='round'%20stroke-linejoin='round'/%3E%3Cpath%20d='M36%2023C36.7163%2021.0601%2037.3736%2018.5271%2036%2017'%20stroke='%2300d1ff'%20stroke-width='3'%20stroke-linecap='round'%20stroke-linejoin='round'/%3E%3C/svg%3E" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hephaestus</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Rajdhani', 'sans-serif'],
+            },
+            boxShadow: {
+              'glow-blue': '0 0 15px rgba(59, 130, 246, 0.5), 0 0 5px rgba(59, 130, 246, 0.6)',
+              'glow-red': '0 0 15px rgba(239, 68, 68, 0.6), 0 0 5px rgba(239, 68, 68, 0.7)',
+              'inset-glow-blue': 'inset 0 0 10px rgba(59, 130, 246, 0.5)',
+            },
+            animation: {
+                'pulse-glow': 'pulse-glow 2.5s ease-in-out infinite',
+                'pulse-glow-red': 'pulse-glow-red 2.5s ease-in-out infinite',
+            },
+            keyframes: {
+                'pulse-glow': {
+                    '0%, 100%': { boxShadow: '0 0 15px rgba(59, 130, 246, 0.5), 0 0 5px rgba(59, 130, 246, 0.6)' },
+                    '50%': { boxShadow: '0 0 25px rgba(59, 130, 246, 0.8), 0 0 10px rgba(59, 130, 246, 0.9)' },
+                },
+                'pulse-glow-red': {
+                    '0%, 100%': { boxShadow: '0 0 15px rgba(239, 68, 68, 0.6), 0 0 5px rgba(239, 68, 68, 0.7)' },
+                    '50%': { boxShadow: '0 0 25px rgba(239, 68, 68, 0.9), 0 0 10px rgba(239, 68, 68, 1)' },
+                },
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+        .scanline-effect::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(59, 130, 246, 0) 0%, rgba(59, 130, 246, 0.2) 48%, rgba(192, 228, 255, 0.6) 50%, rgba(59, 130, 246, 0.2) 52%, rgba(59, 130, 246, 0) 100%);
+            opacity: 0;
+            transform: translateY(-100%);
+            transition: opacity 0.5s ease;
+            pointer-events: none;
+            z-index: 1;
+        }
+        .group:hover .scanline-effect::after {
+            opacity: 1;
+            animation: scan 1.5s cubic-bezier(0.23, 1, 0.32, 1) infinite;
+        }
+        @keyframes scan {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(100%); }
+        }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.17.0",
+    "react/": "https://aistudiocdn.com/react@^19.1.1/",
+    "react": "https://aistudiocdn.com/react@^19.1.1",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.1.1/",
+    "three": "https://cdn.jsdelivr.net/npm/three@0.166.1/build/three.module.js"
+  }
+}
+</script>
+</head>
+  <body class="text-gray-200 font-sans">
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
