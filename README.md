@@ -5,7 +5,7 @@
 # HEPHAESTUS
 ### The Architect's Divine Assistant
 
-*Transform 2D Blueprints into Immersive 3D Experiences using Advanced AI*
+*Transform any floor plan into a photorealistic 360° walkthrough in minutes*
 
 [![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://reactjs.org/)
